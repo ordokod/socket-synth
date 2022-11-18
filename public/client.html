@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SOCKET SYNTH - OUTPUT</title>
+    <link rel="stylesheet" href="https://use.typekit.net/xkk6rjc.css" />
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="/js/client.js" type="module" defer></script>
+    <style>
+      body {
+        background-color: #000;
+        font-family: futura-pt, sans-serif;
+        color: #fff;
+      }
+
+      body .active {
+        background-color: #fff;
+        color: #000;
+      }
+
+      .wrapper {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 400px;
+        font-size: 100px;
+        
+      }
+
+      input {
+        background-color: #000;
+        color: #fff;
+        border: 1px solid #fff;
+        padding: 10px;
+        font-size: 1.5rem;
+        font-family: futura-pt, sans-serif;
+        text-transform: uppercase;
+        text-align: center;
+        margin-bottom: 30px;
+      }
+      input:focus::placeholder {
+        color: transparent;
+      }
+      input:focus {
+        outline: none;
+      }
+      button {
+        background-color: #000;
+        color: #fff;
+        border: 1px solid #fff;
+        padding: 10px;
+        font-size: 1.5rem;
+        font-family: futura-pt, sans-serif;
+        text-transform: uppercase;
+        text-align: center;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="start-view" class="view">
+    <div  class="wrapper">
+      <input type="text" id="name-input" placeholder="Enter yor name" />
+      <button id="start-button">GO</button>
+    </div>
+  </div>
+  <div id="note-view" class="view"></div>
+    <div  class="wrapper">
+      <div id="note"></div>
+  </body>
+</html>
