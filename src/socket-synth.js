@@ -1,5 +1,5 @@
 import { Server } from "socket.io";
-import { server } from "./server.mjs";
+import { server } from "./server.js";
 
 export const SocketSynth = () => {
   const ioServer = new Server(server);
@@ -47,6 +47,7 @@ export const SocketSynth = () => {
       note: getAvailableNote(),
       name,
     };
+
     return client;
   };
 

@@ -35,4 +35,8 @@ export const joinAsClient = ({
     console.log("note", note);
     onPlayNote(note);
   });
+
+  socket.on("clients", (clients) => {
+    console.log("clients", clients);
+  });
 };

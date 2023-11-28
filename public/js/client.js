@@ -72,7 +72,7 @@ const noteMap = {
   126: "F#",
 };
 
-let clientNote = 0;
+let clientNote = 60;
 
 const start = (name) => {
   joinAsClient({
@@ -83,7 +83,14 @@ const start = (name) => {
       setClientNote(client.note);
     },
     onPlayNote: (note) => {
+      console.log("note XXXX", note);
+      console.log("clientnote XXXX", clientNote);
+
       if (note.note !== clientNote) return;
+
+      console.log("note XXXX", note);
+      console.log("clientnote XXXX", clientNote);
+
       setBackgroundColorByVelocity(note.velocity);
       playNote(note);
     },
@@ -99,6 +106,7 @@ const setBackgroundColorByVelocity = (velocity) => {
 };
 
 const setClientNote = (note) => {
+  console.log("setClientNote", note);
   clientNote = note;
 };
 
@@ -118,17 +126,9 @@ const showNoteView = (note) => {
 };
 
 const onStartClick = () => {
-  const name = document.getElementById("name-input").value;
-  if (!name) return;
+  const name = "🤘";
   start(name);
 };
 
-document.getElementById("name-input").addEventListener("keyup", (e) => {
-  e.preventDefault();
-
-  if (e.key !== "Enter") return;
-
-  onStartClick();
-});
 const startButton = document.getElementById("start-button");
 startButton.addEventListener("click", () => onStartClick());
