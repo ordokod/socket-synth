@@ -4,21 +4,52 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>SOCKET SYNTH - OUTPUT</title>
+    <title>SOCKET SYNTH - CLIENT</title>
     <link rel="stylesheet" href="https://use.typekit.net/xkk6rjc.css" />
 
     <script src="/socket.io/socket.io.js"></script>
     <script src="/js/client.js" type="module" defer></script>
     <style>
-      body {
-        background-color: #000;
-        font-family: futura-pt, sans-serif;
-        color: #fff;
+
+    :root {
+        --yellow: #e8ab12;
+        --purple: #8b6189;
+        --light-blue: #8dc5e6;
+        --orange: #8dc5e6;
+        --peach: #8dc5e6;
+        --dark-blue: #207da8;
+        --brown: #8e6513;
+        --pink: #ea777e;
+        --red: #c11717;
+        --beige: #d5bb7e;
       }
 
-      body .active {
-        background-color: #fff;
-        color: #000;
+      * {
+        transition: all 0.15s ease-in-out;
+
+      }
+
+      body {
+        background-color: var(--red);
+        font-family: futura-pt, sans-serif;
+        color: var(--yellow);
+
+      }
+
+      h1 {
+        font-size: 5rem;
+        text-transform: uppercase;
+        text-align: center;
+        margin-bottom: 60px;
+      }
+
+      .view {
+        display: none;
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
       }
 
       .wrapper {
@@ -26,34 +57,17 @@
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        height: 400px;
         font-size: 100px;
-        
+        height: 100%;
       }
 
-      input {
-        background-color: #000;
-        color: #fff;
-        border: 1px solid #fff;
-        padding: 10px;
-        font-size: 1.5rem;
-        font-family: futura-pt, sans-serif;
-        text-transform: uppercase;
-        text-align: center;
-        margin-bottom: 30px;
-      }
-      input:focus::placeholder {
-        color: transparent;
-      }
-      input:focus {
-        outline: none;
-      }
       button {
-        background-color: #000;
+        background-color: var(--yellow);
         color: #fff;
-        border: 1px solid #fff;
-        padding: 10px;
-        font-size: 1.5rem;
+        border: none;
+        border-radius: 20px;
+        padding: 0 60px;
+        font-size: 4rem;
         font-family: futura-pt, sans-serif;
         text-transform: uppercase;
         text-align: center;
@@ -62,14 +76,17 @@
     </style>
   </head>
   <body>
-    <div id="start-view" class="view">
-    <div  class="wrapper">
-     
-      <button id="start-button">GO</button>
+    <div id="start-view" class="view" style="display: block;">
+      <div  class="wrapper">
+        <h1>SOCKET SYNTH</h1>
+        <button id="start-button">START</button>
+      </div>
     </div>
-  </div>
-  <div id="note-view" class="view"></div>
-    <div  class="wrapper">
-      <div id="note"></div>
+    <div id="note-view" class="view">
+      <div  class="wrapper">
+        <h1 id="note"></h1>
+        </div>
+      </div>
+    </div>
   </body>
 </html>

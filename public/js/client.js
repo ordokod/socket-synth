@@ -71,6 +71,9 @@ const noteMap = {
   125: "F",
   126: "F#",
 };
+const noteView = document.getElementById("note-view");
+const startView = document.getElementById("start-view");
+const noteElement = document.getElementById("note");
 
 let clientNote = 60;
 
@@ -83,15 +86,8 @@ const start = (name) => {
       setClientNote(client.note);
     },
     onPlayNote: (note) => {
-      console.log("note XXXX", note);
-      console.log("clientnote XXXX", clientNote);
-
       if (note.note !== clientNote) return;
-
-      console.log("note XXXX", note);
-      console.log("clientnote XXXX", clientNote);
-
-      setBackgroundColorByVelocity(note.velocity);
+      animateNoteView(note.velocity);
       playNote(note);
     },
   });
@@ -99,14 +95,11 @@ const start = (name) => {
   startSynth();
 };
 
-const setBackgroundColorByVelocity = (velocity) => {
-  const color =
-    velocity === 0 ? "black" : `rgba(0, 0, 0, ${1 - velocity / 127})`;
-  document.body.style.backgroundColor = color;
+const animateNoteView = (velocity) => {
+  noteElement.style.transform = `scale(${1 + (3 * velocity) / 127})`;
 };
 
 const setClientNote = (note) => {
-  console.log("setClientNote", note);
   clientNote = note;
 };
 
@@ -119,10 +112,9 @@ const hideStartView = () => {
 };
 
 const showNoteView = (note) => {
-  const noteView = document.getElementById("note-view");
-  const noteElement = document.getElementById("note");
-  noteElement.innerHTML = getNoteByNumber(note);
+  startView.style.display = "none";
   noteView.style.display = "block";
+  noteElement.innerHTML = getNoteByNumber(note);
 };
 
 const onStartClick = () => {

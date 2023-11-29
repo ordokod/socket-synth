@@ -1,0 +1,27 @@
+:root {
+  --yellow: #e8ab12;
+  --purple: #8b6189;
+  --light-blue: #8dc5e6;
+  --orange: #8dc5e6;
+  --peach: #8dc5e6;
+  --dark-blue: #207da8;
+  --brown: #8e6513;
+  --pink: #ea777e;
+  --red: #c11717;
+  --beige: #d5bb7e;
+}
+
+body {
+  background-color: var(--beige);
+  color: var(--red);
+  font-family: futura-pt, sans-serif;
+  font-size: 1.2rem;
+  margin: 0;
+  padding: 0;
+}
+
+h1 {
+  font-size: 2.5rem;
+  margin: 0;
+  padding: 0;
+}

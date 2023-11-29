@@ -1,3 +1,3 @@
-import { SocketSynth } from "./src/socket-synth.js";
+import { InitSocketSynth } from "./src/socket-synth.js";
 
-SocketSynth();
+InitSocketSynth();

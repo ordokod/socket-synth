@@ -1,7 +1,7 @@
 import { Server } from "socket.io";
 import { server } from "./server.js";
 
-export const SocketSynth = () => {
+export const InitSocketSynth = () => {
   const ioServer = new Server(server);
   const notes = [60, 62, 64, 65, 67, 69, 71, 72];
   let clients = [];

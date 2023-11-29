@@ -8,21 +8,54 @@
 
     <link rel="stylesheet" href="https://use.typekit.net/xkk6rjc.css" />
     <style>
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
+      :root {
+        --yellow: #e8ab12;
+        --purple: #8b6189;
+        --light-blue: #8dc5e6;
+        --orange: #8dc5e6;
+        --peach: #8dc5e6;
+        --dark-blue: #207da8;
+        --brown: #8e6513;
+        --pink: #ea777e;
+        --red: #c11717;
+        --beige: #d5bb7e;
       }
-      .piano {
+
+      * {
+        transition: all 0.15s ease-in-out;
+      }
+
+      body {
+        background-color: var(--red);
+        font-family: futura-pt, sans-serif;
+        color: var(--yellow);
+      }
+
+      h1 {
+        font-size: 5rem;
+        text-transform: uppercase;
+        text-align: center;
+        margin-bottom: 130px;
+      }
+
+      .wrapper {
         display: flex;
-        flex-direction: row;
+        flex-direction: column;
         align-items: center;
         justify-content: center;
+        font-size: 100px;
+      }
+
+      .piano {
+        position: relative;
         font-family: sans-serif;
-        height: 100%;
-        width: 100%;
-        transform: scale(4);
-        transform-origin: top left;
+        border-radius: 10px;
+        overflow: hidden;
+        width: 300px;
+        height: 100px;
+        transform: scale(2);
+        border: 3px solid #000;
+        background-color: #fff;
       }
       .key {
         position: absolute;
@@ -32,20 +65,21 @@
         font-size: 20px;
         padding-bottom: 10px;
         text-transform: uppercase;
-
         transition: all 0.2s ease-in-out;
+        cursor: pointer;
+        user-select: none;
       }
 
       .key.white {
         border: 1px solid #666;
         width: 30px;
-        height: 200px;
+        height: 100px;
         background-color: #e1e1e1;
       }
 
       .key.black {
         background-color: #000;
-        height: 110px;
+        height: 60px;
         width: 20px;
         z-index: 1;
         border: none;
@@ -57,11 +91,11 @@
       }
 
       .key.active {
-        background-color: #f00;
+        background-color: var(--pink);
       }
 
       .key.playing {
-        background-color: #f00;
+        background-color: var(--light-blue);
       }
     </style>
 
@@ -70,6 +104,7 @@
   </head>
   <body>
     <div class="wrapper">
+      <h1>SOCKET SYNTH</h1>
       <div class="piano">
         <div class="key white" style="left: 0" data-key="60"></div>
         <div class="key black" style="left: 20px" data-key="61"></div>
