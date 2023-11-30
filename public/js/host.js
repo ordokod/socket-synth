@@ -10,6 +10,11 @@ const isTouchDevice = () => {
 };
 
 const updatePianoKeys = (players) => {
+  const keys = document.querySelectorAll(".key");
+  keys.forEach((key) => {
+    key.innerHTML = "";
+  });
+
   players.forEach((player) => {
     const key = document.querySelector(`.key[data-key="${player.note}"]`);
     key.innerHTML = player.name;

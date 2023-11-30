@@ -9,6 +9,7 @@ export const joinAsHost = ({
   });
 
   socket.on("clients", (clients) => {
+    console.log("clients", clients);
     onClientsChanged(clients);
   });
 

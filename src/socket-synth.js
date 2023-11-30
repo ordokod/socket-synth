@@ -9,7 +9,7 @@ export const InitSocketSynth = () => {
   ioServer.on("connection", (socket) => addSocketListeners(socket));
 
   const addSocketListeners = (socket) => {
-    socket.on("join-as-host", () => onJoinAsHost());
+    socket.on("join-as-host", () => onJoinAsHost(socket));
     socket.on("join-as-client", (name) => onJoinAsClient(socket, name));
     socket.on("play-note", (note) => socket.broadcast.emit("play-note", note));
     socket.on("disconnect", () => onDisconnect(socket));
@@ -18,17 +18,19 @@ export const InitSocketSynth = () => {
   const onDisconnect = (socket) => {
     console.log("user disconnected");
     clients = clients.filter((client) => client.id !== socket.id);
-    emitClients();
+    console.log("clients", clients);
+    emitClients(socket, clients);
   };
 
-  const emitClients = () => ioServer.emit("clients", clients);
+  const emitClients = (socket, clients) =>
+    socket.broadcast.emit("clients", clients);
   const emitClientJoined = (socket, client) => {
     socket.emit("client-joined", client);
   };
 
-  const onJoinAsHost = () => {
+  const onJoinAsHost = (socket) => {
     console.log("host joined");
-    emitClients();
+    emitClients(socket, clients);
   };
 
   const onJoinAsClient = (socket, name) => {
@@ -38,7 +40,7 @@ export const InitSocketSynth = () => {
     const newClient = createNewClient(socket, name);
     addClientToClients(newClient);
     emitClientJoined(socket, newClient);
-    emitClients();
+    emitClients(socket, clients);
   };
 
   const createNewClient = (socket, name) => {
