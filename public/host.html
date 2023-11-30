@@ -3,44 +3,22 @@
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
     <title>SOCKET SYNTH - HOST</title>
 
     <link rel="stylesheet" href="https://use.typekit.net/xkk6rjc.css" />
+    <link href="/css/style.css" rel="stylesheet" />
     <style>
-      :root {
-        --yellow: #e8ab12;
-        --purple: #8b6189;
-        --light-blue: #8dc5e6;
-        --orange: #8dc5e6;
-        --peach: #8dc5e6;
-        --dark-blue: #207da8;
-        --brown: #8e6513;
-        --pink: #ea777e;
-        --red: #c11717;
-        --beige: #d5bb7e;
-      }
-
-      a {
-        color: var(--yellow);
-        text-decoration: none;
-      }
-
-      * {
-        transition: all 0.15s ease-in-out;
-      }
-
       body {
         background-color: var(--red);
         font-family: futura-pt, sans-serif;
         color: var(--yellow);
-      }
-
-      h1 {
-        font-size: 5rem;
-        text-transform: uppercase;
-        text-align: center;
-        margin-bottom: 130px;
+        -webkit-user-select: none;
+        user-select: none;
       }
 
       .wrapper {
@@ -59,9 +37,10 @@
         overflow: hidden;
         width: 300px;
         height: 100px;
-        transform: scale(2);
+        transform: scale(1);
         border: 3px solid #000;
         background-color: #fff;
+        user-select: none;
       }
       .key {
         position: absolute;
@@ -76,8 +55,12 @@
         user-select: none;
       }
 
+      .key.white:first-child {
+        border-left: none;
+      }
+
       .key.white {
-        border: 1px solid #666;
+        border-left: 1px solid #666;
         width: 30px;
         height: 100px;
         background-color: #e1e1e1;
@@ -110,7 +93,7 @@
   </head>
   <body>
     <div class="wrapper">
-      <div class="piano">
+      <div class="piano" id="piano">
         <div class="key white" style="left: 0" data-key="60"></div>
         <div class="key black" style="left: 20px" data-key="61"></div>
         <div class="key white" style="left: 30px" data-key="62"></div>

@@ -6,41 +6,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>SOCKET SYNTH - CLIENT</title>
     <link rel="stylesheet" href="https://use.typekit.net/xkk6rjc.css" />
-
+    <link href="/css/style.css" rel="stylesheet" />
     <script src="/socket.io/socket.io.js"></script>
     <script src="/js/client.js" type="module" defer></script>
     <style>
 
-    :root {
-        --yellow: #e8ab12;
-        --purple: #8b6189;
-        --light-blue: #8dc5e6;
-        --orange: #8dc5e6;
-        --peach: #8dc5e6;
-        --dark-blue: #207da8;
-        --brown: #8e6513;
-        --pink: #ea777e;
-        --red: #c11717;
-        --beige: #d5bb7e;
-      }
-
       * {
         transition: all 0.15s ease-in-out;
-
       }
 
       body {
         background-color: var(--red);
-        font-family: futura-pt, sans-serif;
         color: var(--yellow);
 
-      }
-
-      h1 {
-        font-size: 5rem;
-        text-transform: uppercase;
-        text-align: center;
-        margin-bottom: 60px;
       }
 
       .view {
@@ -56,35 +34,38 @@
         display: flex;
         flex-direction: column;
         align-items: center;
-        justify-content: center;
-        font-size: 100px;
+        justify-content: center;      
         height: 100%;
       }
 
-      button {
+      #note {
+        font-size: 6rem;
+        text-transform: uppercase;
+        text-align: center;
+      }
+
+      #start-button {
         background-color: var(--yellow);
         color: #fff;
-        border: none;
         border-radius: 20px;
         padding: 0 60px;
         font-size: 4rem;
-        font-family: futura-pt, sans-serif;
         text-transform: uppercase;
         text-align: center;
         cursor: pointer;
       }
+
     </style>
   </head>
   <body>
     <div id="start-view" class="view" style="display: block;">
       <div  class="wrapper">
-        <h1>SOCKET SYNTH</h1>
-        <button id="start-button">START</button>
+        <div id="start-button">START</div>
       </div>
     </div>
     <div id="note-view" class="view">
       <div  class="wrapper">
-        <h1 id="note"></h1>
+        <div id="note"></div>
         </div>
       </div>
     </div>
