@@ -28,7 +28,7 @@ const createOscillator = (midiNote) => {
   gain.gain.setTargetAtTime(gainValue, audioContext.currentTime, 0.01);
   //  gain.gain.setTargetAtTime(0, audioContext.currentTime + 0.01, 0.5);
   oscillator.frequency.value = getFrequencyFromNote(note);
-  oscillator.type = "sine";
+  oscillator.type = "square";
   oscillator.start(audioContext.currentTime);
 
   return { oscillator, note, gain };
