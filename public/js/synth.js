@@ -7,7 +7,7 @@ export const startSynth = () => {
   audioContext = new AudioContext();
   mainGain = audioContext.createGain();
   mainGain.connect(audioContext.destination);
-  mainGain.gain.value = 0.3;
+  mainGain.gain.value = 1;
 };
 
 const createOscillator = (midiNote) => {
@@ -22,6 +22,7 @@ const createOscillator = (midiNote) => {
   oscillator.connect(gain);
   gain.connect(mainGain);
   const gainValue = velocity / 127;
+  console.log("gainValue", gainValue);
   gain.gain.value = gainValue;
   gain.gain.setValueAtTime(0.0, audioContext.currentTime);
   gain.gain.setTargetAtTime(gainValue, audioContext.currentTime, 0.01);

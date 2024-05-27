@@ -42,7 +42,7 @@ const addListeners = () => {
   keys.forEach((key) => {
     key.addEventListener("mousedown", (e) => {
       const note = parseInt(e.target.dataset.key);
-      playNote({ note, velocity: 100 });
+      playNote({ note, velocity: 127 });
     });
     key.addEventListener("mouseup", (e) => {
       const note = parseInt(e.target.dataset.key);
@@ -52,9 +52,10 @@ const addListeners = () => {
 };
 
 const playNote = (note) => {
+  console.log("note", note);
   const key = document.querySelector(`.key[data-key="${note.note}"]`);
-  if (note.velocity === 0) key.classList.remove("playing");
-  if (note.velocity !== 0) key.classList.add("playing");
+  if (note.velocity === 0 && key) key.classList.remove("playing");
+  if (note.velocity !== 0 && key) key.classList.add("playing");
   emitNoteToServer(note);
 };
 

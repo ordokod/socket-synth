@@ -86,6 +86,7 @@ const start = (name) => {
       setClientNote(client.note);
     },
     onPlayNote: (note) => {
+      console.log("note", note);
       if (note.note !== clientNote) return;
       animateNoteView(note.velocity);
       playNote(note);
