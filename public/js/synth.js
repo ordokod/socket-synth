@@ -3,7 +3,9 @@ let mainGain = null;
 let oscillators = [];
 
 export const startSynth = () => {
-  console.log("startSynth");
+  if (audioContext) {
+    return;
+  }
   audioContext = new AudioContext();
   mainGain = audioContext.createGain();
   mainGain.connect(audioContext.destination);
@@ -26,7 +28,7 @@ const createOscillator = (midiNote) => {
   gain.gain.value = gainValue;
   gain.gain.setValueAtTime(0.0, audioContext.currentTime);
   gain.gain.setTargetAtTime(gainValue, audioContext.currentTime, 0.01);
-  //  gain.gain.setTargetAtTime(0, audioContext.currentTime + 0.01, 0.5);
+  gain.gain.setTargetAtTime(0, audioContext.currentTime + 0.01, 1);
   oscillator.frequency.value = getFrequencyFromNote(note);
   oscillator.type = "square";
   oscillator.start(audioContext.currentTime);

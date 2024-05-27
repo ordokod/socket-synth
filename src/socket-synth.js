@@ -3,7 +3,7 @@ import { server } from "./server.js";
 
 export const InitSocketSynth = () => {
   const ioServer = new Server(server);
-  const notes = [60, 62, 64, 65, 67, 69, 71, 72, 74, 76];
+  const notes = [60, 62, 64, 65, 67, 69, 71, 72, 74, 76, 77, 79, 81, 83, 84];
   let clients = [];
 
   ioServer.on("connection", (socket) => addSocketListeners(socket));
