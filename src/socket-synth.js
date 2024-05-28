@@ -6,6 +6,13 @@ export const InitSocketSynth = () => {
   const notes = [60, 62, 64, 65, 67, 69, 71, 72, 74, 76, 77, 79, 81, 83, 84];
   let clients = [];
 
+  const tick700 = () => {
+    ioServer.emit("tick700", new Date().getTime());
+    setTimeout(tick700, 7000);
+  };
+
+  tick700();
+
   ioServer.on("connection", (socket) => addSocketListeners(socket));
 
   const addSocketListeners = (socket) => {
